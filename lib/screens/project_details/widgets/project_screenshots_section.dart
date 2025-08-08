@@ -45,7 +45,7 @@ class _ProjectScreenshotsSectionState extends State<ProjectScreenshotsSection> {
                   ],
                 )
               : AspectRatio(
-                  aspectRatio: 800 / 460,
+                  aspectRatio: 1000 / 500,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

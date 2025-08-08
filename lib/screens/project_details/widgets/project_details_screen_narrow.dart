@@ -41,10 +41,13 @@ class _ProjectDetailsScreenNarrowState
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      cacheExtent: 0,
-      itemCount: children.length,
-      itemBuilder: (context, index) => children[index],
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: ListView.builder(
+        cacheExtent: 0,
+        itemCount: children.length,
+        itemBuilder: (context, index) => children[index],
+      ),
     );
   }
 }

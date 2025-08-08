@@ -27,7 +27,7 @@ class CurrentImageLayout extends StatelessWidget {
               key: ValueKey(currentImage),
               width: double.infinity,
               height: isMobile ? null : double.infinity,
-              child: Image.asset(currentImage, fit: BoxFit.cover),
+              child: Image.asset(currentImage, fit: BoxFit.fill),
             ),
           ),
           Align(
