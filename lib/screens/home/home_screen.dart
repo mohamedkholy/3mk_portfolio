@@ -89,7 +89,7 @@ class _PortfolioHomeState extends State<PortfolioHome> {
         child: Column(
           children: [
             ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 1300),
+              constraints: BoxConstraints(maxWidth: 1500),
               child: Column(children: children),
             ),
             ContactSection(key: _contactKey),

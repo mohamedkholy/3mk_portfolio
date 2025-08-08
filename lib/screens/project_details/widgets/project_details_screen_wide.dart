@@ -46,7 +46,7 @@ class _ProjectDetailsScreenWideState extends State<ProjectDetailsScreenWide> {
         children: [
           Center(
             child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 1300),
+              constraints: BoxConstraints(maxWidth: 1500),
               child: Container(
                 padding: EdgeInsets.all(20),
                 child: Row(
