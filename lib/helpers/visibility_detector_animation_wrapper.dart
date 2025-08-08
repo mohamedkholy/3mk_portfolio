@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+import 'package:my_portfolio/helpers/animated_widget_wrapper.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class VisibilityDetectorAnimationWrapper extends StatefulWidget {
@@ -27,15 +27,7 @@ class _VisibilityDetectorAnimationWrapperState
         }
       },
       child: _isVisible
-          ? widget.child
-                .animate()
-                .slideY(
-                  begin: 0.2,
-                  end: 0,
-                  duration: Duration(milliseconds: 800),
-                  curve: Curves.fastOutSlowIn,
-                )
-                .fade(duration: Duration(milliseconds: 800))
+          ? AnimatedWidgetWrapper(child: widget.child)
           : Opacity(opacity: 0, child: widget.child),
     );
   }
