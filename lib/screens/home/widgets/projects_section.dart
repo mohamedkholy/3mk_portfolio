@@ -4,7 +4,6 @@ import 'package:my_portfolio/models/project.dart';
 import 'package:my_portfolio/screens/home/widgets/project_card.dart';
 
 class ProjectsSection extends StatelessWidget {
-  final GlobalKey _key;
   final _projects = const [
     Project(
       title: 'Metro Scout',
@@ -151,12 +150,12 @@ class ProjectsSection extends StatelessWidget {
     ),
   ];
 
-  const ProjectsSection(this._key, {super.key});
+  const ProjectsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      key: _key,
+
       padding: EdgeInsets.all(32),
       child: Column(
         children: [

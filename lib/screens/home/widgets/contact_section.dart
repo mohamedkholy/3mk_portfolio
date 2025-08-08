@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/screens/home/widgets/contact_button.dart';
 
 class ContactSection extends StatelessWidget {
-  final GlobalKey? _key;
-  const ContactSection({sectionKey, super.key}) : _key = sectionKey;
+  const ContactSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      key: _key,
       padding: EdgeInsets.all(32),
       color: Colors.grey[800],
       child: Column(

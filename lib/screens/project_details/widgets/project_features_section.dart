@@ -13,7 +13,6 @@ class ProjectFeaturesSection extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -25,37 +24,35 @@ class ProjectFeaturesSection extends StatelessWidget {
             ),
           ),
           SizedBox(height: 12),
-          ...features
-              .map(
-                (feature) => Padding(
-                  padding: EdgeInsets.only(bottom: 8),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 6, right: 12),
-                        width: 6,
-                        height: 6,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          feature,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[700],
-                            height: 1.4,
-                          ),
-                        ),
-                      ),
-                    ],
+          ...features.map(
+            (feature) => Padding(
+              padding: EdgeInsets.only(bottom: 8),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 6, right: 12),
+                    width: 6,
+                    height: 6,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      shape: BoxShape.circle,
+                    ),
                   ),
-                ),
-              )
-              .toList(),
+                  Expanded(
+                    child: Text(
+                      feature,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[700],
+                        height: 1.4,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

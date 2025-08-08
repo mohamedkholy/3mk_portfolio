@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/models/project.dart';
-import 'package:my_portfolio/screens/project_details/project_details_screen.dart';
+import 'package:my_portfolio/screens/project_details/project_details_screen.dart'
+    deferred as project_details_screen;
 
 class ProjectCard extends StatefulWidget {
   final Project _project;
@@ -53,14 +54,35 @@ class _ProjectCardState extends State<ProjectCard> {
                           _isHovered = value;
                         });
                       },
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                               ProjectDetailScreen(project: widget._project)
-                          ),
-                        );
+                      onTap: () async {
+                        await project_details_screen.loadLibrary();
+                        if (context.mounted) {
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      project_details_screen.ProjectDetailScreen(
+                                        project: widget._project,
+                                      ),
+                              transitionsBuilder:
+                                  (
+                                    context,
+                                    animation,
+                                    secondaryAnimation,
+                                    child,
+                                  ) {
+                                    return SlideTransition(
+                                      position: Tween<Offset>(
+                                        begin: Offset(1, 0),
+                                        end: Offset.zero,
+                                      ).animate(animation),
+                                      child: child,
+                                    );
+                                  },
+                            ),
+                          );
+                        }
                       },
                       child: Container(
                         padding: EdgeInsets.all(12),

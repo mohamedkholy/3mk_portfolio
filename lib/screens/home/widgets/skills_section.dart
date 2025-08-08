@@ -13,13 +13,12 @@ class SkillsSection extends StatelessWidget {
     'Git, GitHub',
   ];
 
-  final GlobalKey _key;
-  const SkillsSection(this._key, {super.key});
+
+  const SkillsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      key: _key,
       padding: EdgeInsets.all(32),
       child: Column(
         children: [

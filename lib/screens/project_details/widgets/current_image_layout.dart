@@ -1,29 +1,40 @@
 import 'package:flutter/material.dart';
 
 class CurrentImageLayout extends StatelessWidget {
-  final String _currentImage;
+  final String currentImage;
 
-  final bool _isMobile;
+  final bool isMobile;
 
-  const CurrentImageLayout(this._currentImage, this._isMobile, {super.key});
+  const CurrentImageLayout({
+    super.key,
+    required this.currentImage,
+    required this.isMobile,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-         showFullScreenImageDialog(context, _currentImage);
+        showFullScreenImageDialog(context, currentImage);
       },
       child: Stack(
         children: [
-          SizedBox(
-            height: _isMobile ? null : double.infinity,
-            child: Image.asset(_currentImage, fit: BoxFit.cover),
+          AnimatedSwitcher(
+            duration: Duration(milliseconds: 400),
+            switchInCurve: Curves.easeIn,
+            switchOutCurve: Curves.easeOut,
+            child: SizedBox(
+              key: ValueKey(currentImage),
+              width: double.infinity,
+              height: isMobile ? null : double.infinity,
+              child: Image.asset(currentImage, fit: BoxFit.cover),
+            ),
           ),
           Align(
             alignment: Alignment.topRight,
             child: IconButton(
               onPressed: () {
-                showFullScreenImageDialog(context, _currentImage);
+                showFullScreenImageDialog(context, currentImage);
               },
               icon: Icon(Icons.fullscreen, color: Colors.white, size: 28),
             ),

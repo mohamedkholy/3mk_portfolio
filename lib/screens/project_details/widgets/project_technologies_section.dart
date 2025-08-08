@@ -14,7 +14,6 @@ class ProjectTechnologiesSection extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -30,29 +29,24 @@ class ProjectTechnologiesSection extends StatelessWidget {
             spacing: 8,
             runSpacing: 8,
             children: [
-              ...technologies
-                  .map(
-                    (tech) => Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 17,
-                        vertical: 10,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.blue[50],
-                        borderRadius: BorderRadius.circular(25),
-                        border: Border.all(color: Colors.blue[200]!, width: 1),
-                      ),
-                      child: Text(
-                        tech,
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Colors.blue[700],
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+              ...technologies.map(
+                (tech) => Container(
+                  padding: EdgeInsets.symmetric(horizontal: 17, vertical: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.blue[50],
+                    borderRadius: BorderRadius.circular(25),
+                    border: Border.all(color: Colors.blue[200]!, width: 1),
+                  ),
+                  child: Text(
+                    tech,
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.blue[700],
+                      fontWeight: FontWeight.w600,
                     ),
-                  )
-                  .toList(),
+                  ),
+                ),
+              ),
               Container(width: double.infinity),
             ],
           ),

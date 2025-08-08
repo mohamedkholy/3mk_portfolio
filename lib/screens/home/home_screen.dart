@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/helpers/animated_widget_wrapper.dart';
+import 'package:my_portfolio/helpers/visibility_detector_animation_wrapper.dart';
 import 'package:my_portfolio/screens/home/widgets/about_section.dart';
 import 'package:my_portfolio/screens/home/widgets/contact_section.dart';
 import 'package:my_portfolio/screens/home/widgets/hero_section.dart';
@@ -17,6 +19,26 @@ class _PortfolioHomeState extends State<PortfolioHome> {
   final GlobalKey _skillsKey = GlobalKey();
   final GlobalKey _projectsKey = GlobalKey();
   final GlobalKey _contactKey = GlobalKey();
+
+  late final children =
+      [
+        SizedBox(height: 24),
+        HeroSection(onPressed: () => _scrollToSection(_projectsKey)),
+        AboutSection(key: _aboutKey),
+        VisibilityDetectorAnimationWrapper(
+          key: _skillsKey,
+          child: SkillsSection(),
+        ),
+        VisibilityDetectorAnimationWrapper(
+          key: _projectsKey,
+          child: ProjectsSection(),
+        ),
+      ].map((e) {
+        if (e is VisibilityDetectorAnimationWrapper) {
+          return e;
+        }
+        return AnimatedWidgetWrapper(child: e);
+      }).toList();
 
   void _scrollToSection(GlobalKey key) {
     final context = key.currentContext;
@@ -49,6 +71,10 @@ class _PortfolioHomeState extends State<PortfolioHome> {
             child: Text('About', style: TextStyle(color: Colors.grey[700])),
           ),
           TextButton(
+            onPressed: () => _scrollToSection(_skillsKey),
+            child: Text('Skills', style: TextStyle(color: Colors.grey[700])),
+          ),
+          TextButton(
             onPressed: () => _scrollToSection(_projectsKey),
             child: Text('Projects', style: TextStyle(color: Colors.grey[700])),
           ),
@@ -62,11 +88,11 @@ class _PortfolioHomeState extends State<PortfolioHome> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            HeroSection(onPressed: () => _scrollToSection(_projectsKey)),
-            AboutSection(_aboutKey),
-            SkillsSection(_skillsKey),
-            ProjectsSection(_projectsKey),
-            ContactSection(sectionKey: _contactKey),
+            ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 1300),
+              child: Column(children: children),
+            ),
+            ContactSection(key: _contactKey),
           ],
         ),
       ),

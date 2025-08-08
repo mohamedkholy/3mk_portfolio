@@ -1,6 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/assets.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key, required this.onPressed});
@@ -12,7 +12,9 @@ class HeroSection extends StatelessWidget {
     return Container(
       height: 600,
       width: double.infinity,
+      margin: EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25),
         gradient: LinearGradient(
           colors: [Colors.deepPurple.shade700, Colors.indigo.shade600],
           begin: Alignment.topLeft,
@@ -22,7 +24,6 @@ class HeroSection extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Avatar with glowing effect
           Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
@@ -72,7 +73,6 @@ class HeroSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          // Name
           AutoSizeText(
             'Mohamed El Kholy',
             maxLines: 1,
@@ -84,7 +84,6 @@ class HeroSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          // Subtitle
           Text(
             'Flutter Developer',
             style: TextStyle(
@@ -95,7 +94,6 @@ class HeroSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 32),
-          // Animated Button
           ElevatedButton.icon(
             onPressed: onPressed,
             icon: const Icon(Icons.arrow_forward),
